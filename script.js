@@ -13,28 +13,12 @@ const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 
-let scores, currentScore, activePlayer, playing;
+const winScore = 50;
 
-// Starting conditions
-const init = function () {
-  scores = [0, 0];
-  currentScore = 0;
-  activePlayer = 0;
-  playing = true;
-
-  score0El.textContent = 0;
-  score1El.textContent = 0;
-  current0El.textContent = 0;
-  current1El.textContent = 0;
-
-  diceEl.classList.add('hidden');
-  player0El.classList.remove('player--winner');
-  player1El.classList.remove('player--winner');
-  player0El.classList.add('player--active');
-  player1El.classList.remove('player--active');
-};
-
-init();
+let scores;
+let currentScore;
+let activePlayer;
+let playing;
 
 const switchPlayer = function () {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
@@ -42,6 +26,7 @@ const switchPlayer = function () {
   activePlayer = activePlayer === 0 ? 1 : 0;
   player0El.classList.toggle('player--active');
   player1El.classList.toggle('player--active');
+  SwitchToActivePlayer();
 };
 
 // Rolling dice functionality
@@ -78,7 +63,7 @@ btnHold.addEventListener('click', function () {
       scores[activePlayer];
 
     // 2. Check if player's score is >= 100
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= winScore) {
       // Finish the game
       playing = false;
       diceEl.classList.add('hidden');
@@ -95,5 +80,34 @@ btnHold.addEventListener('click', function () {
     }
   }
 });
+
+const SwitchToActivePlayer = () => {
+  if (activePlayer === 0 && window.screen.width < 450) {
+    document.querySelector("#player-one-scroll").scrollIntoView();
+  } else if (window.screen.width < 450) {
+    document.querySelector("#player-two-scroll").scrollIntoView();
+  }
+}
+
+// Starting conditions
+const init = function () {
+  scores = [0, 0];
+  currentScore = 0;
+  activePlayer = 0;
+  playing = true;
+
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+
+  player0El.classList.remove('player--winner');
+  player1El.classList.remove('player--winner');
+  player0El.classList.add('player--active');
+  player1El.classList.remove('player--active');
+  SwitchToActivePlayer();
+};
+
+init();
 
 btnNew.addEventListener('click', init);
