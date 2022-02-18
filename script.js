@@ -13,6 +13,11 @@ const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 
+const playerOneTop = document.querySelector('.ptw-0');
+const playerOneBottom = document.querySelector('.pbw-0');
+const playerTwoTop = document.querySelector('.ptw-1');
+const playerTwoBottom = document.querySelector('.pbw-1');
+
 const winScore = 50;
 
 let scores;
@@ -83,8 +88,14 @@ btnHold.addEventListener('click', function () {
 
 const SwitchToActivePlayer = () => {
   if (activePlayer === 0 && window.screen.width < 450) {
+    playerOneTop.prepend(btnNew);
+    playerOneBottom.append(btnRoll);
+    playerOneBottom.append(btnHold);
     document.querySelector("#player-one-scroll").scrollIntoView();
   } else if (window.screen.width < 450) {
+    playerTwoTop.prepend(btnNew);
+    playerTwoBottom.append(btnRoll);
+    playerTwoBottom.append(btnHold);
     document.querySelector("#player-two-scroll").scrollIntoView();
   }
 }
