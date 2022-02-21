@@ -8,6 +8,9 @@ const score1El = document.querySelector(".player-1-temp-score");
 const current0El = document.querySelector(".current-score-player-0");
 const current1El = document.querySelector(".current-score-player-1");
 
+const playerScroll0 = document.querySelector(".player-0-scroll");
+const playerScroll1 = document.querySelector(".player-1-scroll");
+
 const diceELPlayer1 = document.querySelector(".dice-0");
 const diceELPlayer2 = document.querySelector(".dice-1");
 const btnNewPlayer1 = document.querySelector("#restart-btn-0");
@@ -32,7 +35,6 @@ const SwitchPlayer = () => {
 
   if (!firstTimePlaying) {
     if (!initilizing) {
-      console.log("Here");
       activePlayer = activePlayer === 0 ? 1 : 0;
       player0El.classList.toggle("player-active");
       player1El.classList.toggle("player-active");
@@ -58,9 +60,9 @@ const SwitchPlayer = () => {
   }
 
   if (activePlayer === 0 && window.screen.width < 450) {
-    document.querySelector(".player-0-scroll").scrollIntoView();
+    playerScroll0.scrollIntoView();
   } else if (activePlayer === 1 && window.screen.width < 450) {
-    document.querySelector(".player-1-scroll").scrollIntoView();
+    playerScroll1.scrollIntoView();
   }
 };
 
