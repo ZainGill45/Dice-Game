@@ -9,226 +9,167 @@
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
-  font-size: 62.5%;
 }
 
 body {
-  height: 100%;
   overflow: hidden;
-  background-color: crimson;
+  background-image: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
+  background-repeat: no-repeat;
   font-family: "Nunito", sans-serif;
 }
 
 main {
-  height: 100%;
   display: flex;
-  flex-direction: column;
-  border-radius: 9px;
-}
-
-.player {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5%;
-  flex-grow: 0;
-  background-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(5px);
 }
 
-.player-top-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.player-bottom-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.btn {
+button {
   color: #444;
   background: none;
   border: none;
   font-family: inherit;
-  font-size: 2.3rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   cursor: pointer;
   font-weight: 400;
   transition: all 0.2s;
   background-color: azure;
   background-color: rgba(250, 250, 250, 0.7);
-  backdrop-filter: blur(20px);
-  padding: 0.7rem 2.5rem;
-  border-radius: 0.4rem;
+  padding: 0.5em 1.5em;
+  border-radius: 0.2rem;
   box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
   display: block;
   margin: auto;
 }
 
-.btn--new {
-  margin-top: 2rem;
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(5px);
+  transition: all 0.75s;
 }
 
-.btn--hold {
-  margin-bottom: 2rem;
+.player-active {
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
-.name {
-  font-size: 4rem;
+.player-active .score {
+  font-weight: 400;
+}
+
+.player-active .current {
+  opacity: 1;
+}
+
+.player-winner {
+  background-color: #2f2f2f;
+}
+
+.player-winner .name {
+  font-weight: 700;
+  color: #c7365f;
+}
+
+.player-winner .perm-score {
+  color: #c7365f;
+}
+
+.top {
+  text-align: center;
+  margin-top: 4%;
+}
+
+.bottom {
+  margin-bottom: 4%;
+}
+
+.restart-btn {
+  margin-bottom: 10%;
+}
+
+.top h1 {
+  font-size: 2.2rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   word-spacing: 2px;
   font-weight: 300;
 }
 
-.dice {
-  display: block;
-  margin: auto;
-  width: 16rem;
-}
-
-.player--active {
-  background-color: rgba(255, 255, 255, 0.7);
-}
-
-.score {
-  position: relative;
-  font-size: 8rem;
+.top p {
+  font-size: 4rem;
   font-weight: 300;
   color: #c7365f;
-  bottom: 2rem;
+  margin-top: -6%;
 }
 
-.player--active .score {
-  font-weight: 400;
+.middle img {
+  width: 10rem;
+  height: 10rem;
 }
 
-.player--active .current {
-  opacity: 1;
-}
-
-.current {
+.bottom .currrent-score-conatiner {
   background-color: #c7365f;
   opacity: 0.8;
   border-radius: 9px;
   color: #fff;
-  padding: 2rem;
+  padding: 1.15rem 2.5rem;
   text-align: center;
   transition: all 0.75s;
-  display: block;
-  margin: auto;
-  width: 65%;
 }
 
-.current-label {
+.current-text {
   text-transform: uppercase;
   font-size: 1.7rem;
   color: #ddd;
 }
 
 .current-score {
-  font-size: 3.5rem;
+  font-size: 2.2rem;
+  margin-top: -5%;
 }
 
-.player--winner {
-  background-color: #2f2f2f;
+.roll-btn {
+  margin-top: 10%;
 }
 
-.player--winner .name {
-  font-weight: 700;
-  color: #c7365f;
+.hold-btn {
+  margin-top: 4%;
 }
 
-@media screen and (min-width: 450px) {
-  body {
-    font-family: "Nunito", sans-serif;
-    font-weight: 400;
-    height: 100vh;
-    color: #333;
-    background-image: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
+.hidden {
+  display: none;
+}
 
+@media screen and (min-width: 1000px) and (min-height: 799px) {
   main {
-    position: relative;
-    width: 100rem;
-    height: 60rem;
-    background-color: rgba(255, 255, 255, 0.35);
-    backdrop-filter: blur(200px);
-    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
-    border-radius: 9px;
-    overflow: hidden;
     display: flex;
-    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 100vh;
   }
 
   .player {
-    flex: 50%;
-    padding: 9rem;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all 0.75s;
+    align-self: center;
+    width: 30%;
+    height: 80vh;
+    max-height: 80vh;
+    min-height: 80vh;
   }
 
-  .btn {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+  .player-0 {
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
   }
 
-  .btn--new {
-    top: 19rem;
-  }
-
-  .btn--hold {
-    top: 67rem;
-  }
-
-  .btn--roll {
-    top: 60rem;
-  }
-
-  .dice {
-    position: absolute;
-    left: 50%;
-    top: 22rem;
-    transform: translateX(-50%);
-    height: 10rem;
-    width: 10rem;
-    box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
-  }
-
-  .current-label {
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    font-size: 1.7rem;
-    color: #ddd;
-  }
-
-  .current-score {
-    font-size: 3.5rem;
-  }
-
-  .player-top-wrapper {
-    position: relative;
-    bottom: 22rem;
-  }
-
-  .current {
-    width: 100%;
-    padding-left: 6rem;
-    padding-right: 6rem;
-    position: relative;
-    bottom: 6rem;
+  .player-1 {
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
   }
 }

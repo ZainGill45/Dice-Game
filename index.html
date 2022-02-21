@@ -8,44 +8,46 @@
     <title>Dice Game</title>
   </head>
   <body>
-    <p id="player-one-scroll"></p>
     <main>
-      <section class="player player--0 player--active">
-        <div class="player-top-wrapper ptw-0">
-          <div class="held-score-wrap">
-            <h2 class="name" id="name--0">Player One</h2>
-            <p class="score" id="score--0">43</p>
-          </div>
+      <p class="player-0-scroll"></p>
+      <section class="player player-0 player-active">
+        <div class="top">
+          <button class="restart-btn" id="restart-btn-0">Restart</button>
+          <h1 class="name">Player One</h1>
+          <p class="player-0-temp-score perm-score">0</p>
         </div>
-        <img src="dice-5.png" alt="Playing dice" class="dice" />
-        <div class="player-bottom-wrapper pbw-0">
-          <div class="current">
-            <p class="current-label">Current</p>
-            <p class="current-score" id="current--0">0</p>
-          </div>
+        <div class="middle">
+          <img src="dice-6.png" alt="Flat Dice Image" class="dice-0"/>
         </div>
-      </section>
-      <section class="player player--1">
-        <div class="player-top-wrapper ptw-1">
-          <div class="held-score-wrap">
-            <h2 class="name" id="name--1">Player Two</h2>
-            <p class="score" id="score--1">24</p>
+        <div class="bottom">
+          <div class="currrent-score-conatiner">
+            <p class="current-text">Current</p>
+            <p class="current-score current-score-player-0">0</p>
           </div>
-        </div>
-        <img src="dice-5.png" alt="Playing dice" class="dice" />
-        <div class="player-bottom-wrapper pbw-1">
-          <div class="current">
-            <p class="current-label">Current</p>
-            <p class="current-score" id="current--1">0</p>
-          </div>
+          <button class="roll-btn roll-player-0">Roll Dice</button>
+          <button class="hold-btn hold-player-0">Hold</button>
         </div>
       </section>
+      <section class="player player-1 player-active">
+        <div class="top">
+          <button class="restart-btn" id="restart-btn-1">Restart</button>
+          <h1 class="name">Player Two</h1>
+          <p class="player-1-temp-score perm-score">0</p>
+        </div>
+        <div class="middle">
+          <img src="dice-6.png" alt="Flat Dice Image" class="dice-1"/>
+        </div>
+        <div class="bottom">
+          <div class="currrent-score-conatiner">
+            <p class="current-text">Current</p>
+            <p class="current-score current-score-player-1">0</p>
+          </div>
+          <button class="roll-btn roll-player-1">Roll Dice</button>
+          <button class="hold-btn hold-player-1">Hold</button>
+        </div>
+      </section>
+      <p class="player-1-scroll"></p>
     </main>
-
-    <button class="btn btn--new">New game</button>
-    <button class="btn btn--roll">Roll dice</button>
-    <button class="btn btn--hold">Hold</button>
-    <p id="player-two-scroll"></p>
     <script src="script.js"></script>
   </body>
 </html>
