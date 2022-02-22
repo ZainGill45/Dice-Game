@@ -30,7 +30,9 @@ let firstTimePlaying = true;
 let initilizing = true;
 
 const SwitchPlayer = () => {
-  document.querySelector(`.current-score-player-${activePlayer}`).textContent = 0;
+  document.querySelector(
+    `.current-score-player-${activePlayer}`
+  ).textContent = 0;
   currentScore = 0;
 
   if (!firstTimePlaying) {
@@ -60,9 +62,9 @@ const SwitchPlayer = () => {
   }
 
   if (activePlayer === 0 && window.screen.width < 450) {
-    playerScroll0.scrollIntoView();
+    $("html, body").animate({ scrollTop: "0" });
   } else if (activePlayer === 1 && window.screen.width < 450) {
-    playerScroll1.scrollIntoView();
+    $("html, body").animate({ scrollTop: "900" });
   }
 };
 
@@ -86,7 +88,9 @@ const RollDice = () => {
     if (dice !== 1) {
       // Add dice to current score
       currentScore += dice;
-      document.querySelector(`.current-score-player-${activePlayer}`).textContent = currentScore;
+      document.querySelector(
+        `.current-score-player-${activePlayer}`
+      ).textContent = currentScore;
     } else {
       // Switch to next player
       firstTimePlaying = false;
@@ -103,17 +107,20 @@ const HoldCurrentScore = () => {
     scores[activePlayer] += currentScore;
     // scores[1] = scores[1] + currentScore
 
-    document.querySelector(
-      `.player-${activePlayer}-temp-score`
-    ).textContent = scores[activePlayer];
+    document.querySelector(`.player-${activePlayer}-temp-score`).textContent =
+      scores[activePlayer];
 
     // 2. Check if player's score is >= 100
     if (scores[activePlayer] >= winScore) {
       // Finish the game
       playing = false;
 
-      document.querySelector(`.player-${activePlayer}`).classList.add("player-winner");
-      document.querySelector(`.player-${activePlayer}`).classList.remove("player-active");
+      document
+        .querySelector(`.player-${activePlayer}`)
+        .classList.add("player-winner");
+      document
+        .querySelector(`.player-${activePlayer}`)
+        .classList.remove("player-active");
     } else {
       // Switch to the next player
       SwitchPlayer();
